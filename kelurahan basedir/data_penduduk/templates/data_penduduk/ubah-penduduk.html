@@ -1,0 +1,32 @@
+{% extends 'data_penduduk/home.html' %}
+
+{% block content %}
+
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <div class="form-floating mb-3">
+                    <h3>Ubah: {{penduduk.nama}}</h3>
+    
+                    {% for message in messages %}
+                        {% if message %}
+                            <div class="alert alert-success">{{ message }}</div>
+                        {% endif %}
+                    {% endfor %}
+                        
+    
+                    <form action="{% url 'ubah_penduduk' penduduk.id %}" method="post">
+                    
+                        {% csrf_token %}
+    
+                        {{ form.as_p }}
+    
+                            <button class="btn btn-outline-primary  btn-sm btn-block">Simpan</button>
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

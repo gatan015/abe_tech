@@ -1,0 +1,79 @@
+{% extends 'data_penduduk/home.html' %}
+{% load static %}
+
+
+{% block content %}
+{% include 'data_penduduk/status.html' %}
+<br>
+<div class="row">
+    <div class="col">
+        <h3>
+            Data Penduduk Kelurahan Air Itam
+            <a href="{% url 'tambahPenduduk' %}" class="btn btn-primary">Tambah</a>
+        </h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form method="get">
+                {{myFilter.form}}
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+        </div>
+    </div>
+    
+</div>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <td>NO KK</td>
+                        <td>NO NIK</td>
+                        <td>NAMA</td>
+                        <td>JENIS KELAMIN</td>
+                        <td>STATUS TINGGAL</td>
+                        <td>ACTION</td>
+                    </tr>
+                </thead>
+        
+                <tbody>
+                    {% for penduduk in penduduk %}
+        
+                    <tr>
+                        <td><a href="{% url 'profilPenduduk' penduduk.id %}">{{ penduduk.no_kk }}</a></td>
+                        <td>{{ penduduk.nik }}</td>
+                        <td>{{ penduduk.nama }}</td>
+                        <td>{{ penduduk.jenis_kelamin }}</td>
+                        <td>{{ penduduk.status_tinggal }}</td>
+                        <td>
+                            <button type="button" data-toggle="modal" data-target="#hapus-{{ penduduk.id }}" class="btn btn-outline-danger  btn-sm btn-block">
+                                Hapus
+                            </button>
+                        </td>
+        
+                        <div class="modal fade" id="hapus-{{ penduduk.id }}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        Apakah anda yakin mau menghapus <strong>{{ penduduk.nama | upper }}</strong>?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="{% url 'hapus_penduduk' penduduk.id %}" class="btn btn-outline-danger">Hapus</a>
+                                        <button class="btn btn-outline-dark" data-dismiss="modal">Tidak</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    

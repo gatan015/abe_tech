@@ -1,0 +1,33 @@
+{% extends 'data_penduduk/home.html' %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card m-8">
+                    <div class="card-header">
+                        Signup
+                    </div>
+                    <div class="card-body shadow-lg">
+                        
+                        {% for message in messages %}
+                            
+                            {% if message %}
+                                <div class="alert alert-success">{{ message }}</div>
+                            {% endif %}
+                                
+                        {% endfor %}
+                            
+                        <form action="{% url 'signup' %}" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button class="btn btn-primary">Kirim</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

@@ -1,0 +1,57 @@
+{% extends 'data_penduduk/home.html' %}
+{% load static %}
+
+
+{% block content %}
+    <br>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Penduduk: {{penduduk}}</h5>
+                <hr>
+                <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'ubah_penduduk' penduduk.id %}">Update Penduduk</a>
+                <a  data-toggle="modal" data-target="#hapus-{{ penduduk.id }}" class="btn btn-outline-danger btn-sm btn-block">
+                    Hapus
+                </a>
+                <div class="modal fade" id="hapus-{{ penduduk.id }}">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                Apakah anda yakin mau menghapus <strong>{{ penduduk.nama | upper }}</strong>?
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'hapus_penduduk' penduduk.id %}" class="btn btn-outline-danger">Hapus</a>
+                                <button class="btn btn-outline-dark" data-dismiss="modal">Tidak</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Contact Information</h5>
+                <hr>
+                <p>NIK: {{penduduk.nik}}</p>
+                <p>No KK: {{penduduk.no_kk}}</p>
+                <p>Lahir di : {{penduduk.tempat_lahir}}</p>
+                <p>Tanggal : {{penduduk.tanggal_lahir}}</p>
+                <p>Alamat : {{penduduk.alamat}}</p>
+                <p>RT : {{penduduk.rt}}</p>
+                <p>RW : {{penduduk.rw}}</p>
+                <p>Pekerjaan : {{penduduk.pekerjaan}}</p>
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body">
+                <h5>Status Tinggal</h5>
+                <hr>
+                <h1 style="text-align: center;padding: 10px">{{penduduk.status_tinggal}}</h1>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelurahan Air Itam</title>
+    <link rel="shortcut icon" href="{% static 'img/pgk.png' %}" type="image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            background: url("{% static 'img/putih.jpg' %}");
+        }
+        .container {
+            width: 100%;
+            min-height: 200px;
+        }
+        #icon {
+            width: 5%;
+            float: left;
+            margin-top: 10px;
+        }
+
+        #banner {
+            width: 35%;
+            float: right;
+            padding-right: 10px;
+            margin-top: 100px;
+        }
+
+        .judul {
+            float: left;
+            /* position: absolute; */
+            top: 100px;
+            left :0%;
+        }
+
+        #kata1 {
+            font-style: italic;
+            display: inline;
+            font-size: 40px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #kata2 {
+            display: inline;
+            font-size: 55px;
+            color: red;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #kata3 {
+            font-style: italic;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color :black
+        }
+
+        #imgkata {
+            margin-top: 500px;
+            margin-left: 0%;
+        }
+
+        #menu ul{
+            list-style-type: none;
+            overflow: hidden;
+            /* margin-left: 50%;
+            padding-right: 10%; */
+        }
+
+        #menu ul li{
+            float: right;
+        }
+
+        #menu ul li a{
+            color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            padding-left: 15px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-right: 15px;
+        }
+
+        #menu ul li a:hover {
+            color: grey;
+        }
+
+        #menu a{
+            color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% include 'judul.html' %}
+                {% include 'aside.html' %}
+                {% block content %}
+                {% endblock content %}
+                {% include 'sosmed.html' %}  
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

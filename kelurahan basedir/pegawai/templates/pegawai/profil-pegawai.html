@@ -1,0 +1,54 @@
+{% extends 'pegawai/home.html' %}
+{% load static %}
+
+
+{% block content %}
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Pegawai: {{profil}}</h5>
+            <hr>
+            <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update' profil.id %}">Update Pegawai</a>
+            <a  data-toggle="modal" data-target="#hapus-{{ profil.id }}" class="btn btn-outline-danger btn-sm btn-block">
+                Hapus
+            </a>
+            <div class="modal fade" id="hapus-{{ profil.id }}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            Apakah anda yakin mau menghapus <strong>{{ profil.nama | upper }}</strong>?
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{% url 'delete' profil.id %}" class="btn btn-outline-danger">Hapus</a>
+                            <button class="btn btn-outline-dark" data-dismiss="modal">Tidak</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Contact Information</h5>
+            <hr>
+            <p>NIP: {{profil.nip}}</p>
+            <p>Status: {{profil.status}}</p>
+            <p>Jabatan: {{profil.jabatan}}</p>
+            <p>Email: {{profil.email}}</p>
+            <p>Phone: {{profil.telpon}}</p>
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Job Descriptions</h5>
+            <hr>
+            <h1 style="text-align: center;padding: 10px">{{profil.note}}</h1>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    

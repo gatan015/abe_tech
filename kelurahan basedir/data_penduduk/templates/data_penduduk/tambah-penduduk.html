@@ -1,0 +1,26 @@
+{% extends 'data_penduduk/home.html' %}
+
+
+{% block content %}
+    <br>
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            <div class="card card-body">
+                <div class="form-floating mb-3">
+                    {% if pesan %}
+                        <div class="alert alert-success">{{ pesan }}</div>
+                    {% endif %}
+                    <form action="{% url 'tambahPenduduk' %}" method="post">
+                        {% csrf_token %}
+
+                        {{ form.as_p }}
+
+                            <button class="btn btn-outline-primary  btn-sm btn-block">Simpan dan Tambah baru</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+    

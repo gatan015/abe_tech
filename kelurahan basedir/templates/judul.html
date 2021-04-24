@@ -1,0 +1,32 @@
+{% load static %}
+
+<img id="icon" src="{% static 'img/pgk.png' %}" alt="">
+<div id="menu">
+    <ul>
+        {% if user.is_authenticated %}
+            <li><a data-bs-toggle="modal" data-bs-target="#keluar">I'm, {{ user }}</a></li>
+            <div class="modal fade" id="keluar">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="modal-title">
+                                <h3>LOGOUT</h3>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            Apakah anda yakin mau keluar sebagai <strong>{{ user | upper }}</strong>?
+                        </div>
+                        <div class="modal-footer">
+                            <a href="{% url 'keluar' %}" class="btn btn-outline-danger">Logout</a>
+                            <button class="btn btn-outline-dark" data-bs-dismiss="modal">Stay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <li><a href="/penduduk/">Admin-Page</a></li>
+        <li><a href="/kontak/">Contact</a></li>
+        <li><a href="/tentang/">About</a></li>
+        <li><a href="/">Home</a></li>
+    </ul>
+</div>
